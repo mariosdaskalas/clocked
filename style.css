@@ -45,6 +45,10 @@ p {
     font-size: 350%;
     color: rgb(47, 47, 207);
 }
+#timer {
+    font-size: 450%;
+    color: rgb(47, 47, 207);
+}
 #day {
     font-size: 250%;
     color: rgb(47, 47, 207);
@@ -53,7 +57,7 @@ p {
     font-size: 450%;
     color: rgb(219, 41, 41);
 }
-#date-container {
+#date-container, #stopwatch-container {
     text-align: center;
     margin: 0 auto;
     background-color: rgba(180, 174, 174, 0.7);
@@ -71,11 +75,13 @@ button {
     font-size: 100%;
     border: none;
     cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
 }
 button:hover {
     background-color: rgb(228, 161, 38);
 }
-#options {
+#options, #controls {
     margin: 1.5rem;
     text-align: center;
 }

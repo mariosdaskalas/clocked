@@ -67,6 +67,8 @@ const getCurrentDateTime = () => {
     setTimeout(getCurrentDateTime, 1);
 }
 
+/* CSS DOM Manipulation */
+
 function increase() {
     document.getElementById("date").style.fontSize = "450%";
     document.getElementById("day").style.fontSize = "350%";

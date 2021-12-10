@@ -9,9 +9,12 @@
     <title>Clocked App</title>
 </head>
 <body>
+    <!-- Logo Section -->
     <div class="title"><h1><a href="/index.html">Clocked App</a></h1>
         <img id="logo" style="width:400px;height:181px;" src="/logo/clocked.png">
     </div>
+
+    <!-- Menu Section -->
     <div class="card-container">
         <div class="card-item"><div><img height="32" width="32" src="/svg/time.svg"/></div><a href="/index.html">Current Date / Time</a></div>
         <div class="card-item"><div><img height="32" width="32" src="/svg/stopwatch.svg"/></div><a href="/stopwatch.html"><b>Stopwatch</b></a></div>
@@ -20,14 +23,20 @@
     <div id="icon-container">
         <p id="icondate"><img src="/svg/timer.svg"/></p>
     </div>
+
+    <!-- Display Stopwatch -->
     <div id="stopwatch-container">
-            <p id="timer">00:00:00</p>
+            <p id="timer">00:00:00:00</p>
     </div>
+
+    <!-- Control Timer Section -->
     <div id="controls">
         <button title="Starts the timer." id="start" onclick="startTimer()">Start</button>
         <button title="Stops the timer." id="stop" onclick="stopTimer()">Stop</button>
         <button title="Resets the timer." id="reset" onclick="resetTimer()">Reset</button>
     </div>
+
+    <!-- Manipulation of CSS Properties -->
     <div id="options">
         <button title="Increases text size ➕" onclick="increase()"><img height="32" width="32" src="/svg/plus.svg"/></button>
         <button title="Decreases text size ➖" onclick="decrease()"><img height="32" width="32" src="/svg/minus.svg"/></button>
@@ -38,5 +47,5 @@
         <p>Created with 💖 and Enthusiasm by <a target="_blank" href="https://github.com/mariosdaskalas">@mariosdaskalas</a></p>
     </div>
 </body>
-<script src="stopwatch.js"></script>
+<script defer src="stopwatch.js"></script>
 </html>

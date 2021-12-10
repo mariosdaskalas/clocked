@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/logo/favicon.ico" type="image/x-icon">
     <title>Clocked App</title>
 </head>
 <body>
-    <h1>Starting App!!</h1>
+    <div class="title"><h1><a href="/index.html">Clocked App</a></h1>
+        <img id="logo" style="width:100px;height:100px;" src="/logo/calcqie.png">
+    </div>
+    <div class="card-container">
+        <div class="card-item"><div><img height="32" width="32" src="/svg/calculator.svg"/></div><a href="/index.html">Current Date / Time</a></div>
+        <div class="card-item"><div><img height="32" width="32" src="/svg/bubble.svg"/></div><a href="#">Stopwatch</a></div>
+        <div class="card-item"><div><img height="32" width="32" src="/svg/body.svg"/></div><a href="#">Countdown</a></div>
+    </div>
+    <div id="icon-container">
+        <p id="icondate"><img src="/svg/timer.svg"/></p>
+    </div>
+    <div id="date-container">
+        <p id="date"></p>
+        <p id="day"></p>
+        <br>
+        <p id="time"></p>
+    </div>
+    <div id="options">
+        <button title="Increases text size ➕" onclick="increase()"><img height="32" width="32" src="/svg/plus.svg"/></button>
+        <button title="Decreases text size ➖" onclick="decrease()"><img height="32" width="32" src="/svg/minus.svg"/></button>
+        <button title="Changes font ✎" onclick="changefont()"><img height="32" width="32" src="/svg/font.svg"/></button>
+        <button title="Refreshes the page 🔄" onclick="refresh()"><img height="32" width="32" src="/svg/reset.svg"/></button>
+    </div>
+    <div id="credits">
+        <p>Created with 💖 and Enthusiasm by <a target="_blank" href="https://github.com/mariosdaskalas">@mariosdaskalas</a></p>
+    </div>
 </body>
+<script src="main.js"></script>
 </html>

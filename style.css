@@ -1,0 +1,88 @@
+body {
+    font-family: Roboto;
+    background-color: lightgray;
+}
+h1 {
+    text-align: center;
+}
+.card-item {
+    background-color: orange;
+    padding: 1rem;
+    height: 3.5rem;
+    text-align: center;
+    font-size: 120%;
+}
+.card-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+    margin-top: 1%;
+}
+@media (min-width: 550px) {
+    .card-container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+    .card-container { grid-template-columns: repeat(3, 1fr); }
+}
+a {
+    text-decoration: none;
+}
+a:visited, a:link {
+    color: black;
+}
+a:hover {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 110%;
+    text-decoration: underline;
+}
+p {
+    display: inline;
+    margin: 4px;
+}
+#date {
+    font-size: 350%;
+    color: rgb(47, 47, 207);
+}
+#day {
+    font-size: 250%;
+    color: rgb(47, 47, 207);
+}
+#time {
+    font-size: 450%;
+    color: rgb(219, 41, 41);
+}
+#date-container {
+    text-align: center;
+    margin: 0 auto;
+    background-color: rgba(180, 174, 174, 0.7);
+    width: 95%;
+}
+#icon-container {
+    text-align: center;
+    margin: 1%;
+} 
+.title {
+    text-align: center;
+}
+button {
+    background-color: orange;
+    font-size: 100%;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: rgb(228, 161, 38);
+}
+#options {
+    margin: 1.5rem;
+    text-align: center;
+}
+#credits {
+    text-align: center;
+    margin: 0 auto;
+    background-color: orange;
+    font-size: 120%;
+    width: 70%;
+}

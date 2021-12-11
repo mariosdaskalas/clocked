@@ -66,15 +66,38 @@ function cycleTimer() {
 
         // Start counting miliseconds
         getSeconds--;
+
+        /*
+        <audio id="myAudio">
+            <source src="/music/piano.mp3" type="audio/mpeg">
+            Your browser does not support this type of audio.
+            </source>
+        </audio>
+        */
+
+        
         
         /* When target is reached increment values */
-        if (getHours ==0 && getMinutes == 0 && getSeconds == 0) {
-            alert("Time is Over!");
-            location.reload();
+        if (getHours == 0 && getMinutes == 0 && getSeconds == 0) {
+            let audio = new Audio("/music/Soft-piano-song/piano.mp3");
+            audio.play();
+            setTimeout(function(){
+                alert("Time is Over! Artist: Alexander Blu // Song: Soft Piano Song")
+            }, 500);
+            timer.innerHTML = "00:00:00";
+            // location.reload();
         }
         if (getMinutes && getSeconds == 0) {
             getMinutes--;
             getSeconds = 59;
+        }
+        /*
+        if (getMinutes < 10) {
+            getMinutes = "0" + getMinutes;
+        }
+        */
+        if (getSeconds < 10) {
+            getSeconds = "0" + getSeconds;
         }
     
         // Display data

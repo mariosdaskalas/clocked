@@ -57,7 +57,7 @@ p {
     font-size: 450%;
     color: rgb(219, 41, 41);
 }
-#date-container, #stopwatch-container {
+#date-container, #stopwatch-container, #countdown-container {
     text-align: center;
     margin: 0 auto;
     background-color: rgba(180, 174, 174, 0.7);
@@ -81,7 +81,7 @@ button {
 button:hover {
     background-color: rgb(228, 161, 38);
 }
-#options, #controls {
+#options, #controls, #edit {
     margin: 1.5rem;
     text-align: center;
 }
@@ -91,4 +91,14 @@ button:hover {
     background-color: orange;
     font-size: 120%;
     width: 70%;
+}
+input[type="number"] {
+    font-size: 110%;
+}
+input {
+    border-radius: 4px;
+    text-align: center;
+}
+input:hover {
+    background-color: orange;
 }

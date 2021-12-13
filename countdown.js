@@ -21,6 +21,12 @@ let getHours = parseInt(document.getElementById("gethours").value);
 let getMinutes = parseInt(document.getElementById("getminutes").value);
 let getSeconds = parseInt(document.getElementById("getseconds").value);
 
+/* Use Else and display it as <p> not an alert
+if (!isNan(getHours) || !isNan(getMinutes) || !isNan(getSeconds) ) {
+    alert("Please input only numbers");
+}
+*/
+
 /* Select  timer*/
 let stopwatch = document.getElementById("timer");
 
@@ -63,8 +69,6 @@ function cycleTimer() {
             setTimeout(function(){
                 alert("Time is Over! Artist: Alexander Blu // Song: Soft Piano Song");
             }, 500);
-            console.log(`Seconds1: ${getSeconds}`);
-            // window.location.reload();
         }
         // Parse to Int
         getHours = parseInt(getHours);
@@ -88,6 +92,10 @@ function cycleTimer() {
         // Display data
         stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
 
+        if (isNaN(getSeconds)) {
+            window.location.reload();
+        }
+       
         // Call cycleTimer() every 10ms
         setTimeout("cycleTimer()", 1000);
     }

@@ -1,25 +1,30 @@
 /* CSS DOM Manipulation */
 
 function increase() {
-    document.getElementById("timer").style.fontSize = "650%";
+  document.getElementById('timer').style.fontSize = '650%';
 }
 
 function decrease() {
-    document.getElementById("timer").style.fontSize = "350%";
+  document.getElementById('timer').style.fontSize = '350%';
 }
 
 function changefont() {
-    document.getElementById("timer").style.fontFamily = "cursive";
+  document.getElementById('timer').style.fontFamily = 'cursive';
 }
 
 function refresh() {
-    location.reload();
+  location.reload();
 }
 
-// Get data from input fields
-let getHours = parseInt(document.getElementById("gethours").value);
-let getMinutes = parseInt(document.getElementById("getminutes").value);
-let getSeconds = parseInt(document.getElementById("getseconds").value);
+// // Get data from input fields
+// let getHours = parseInt(document.getElementById('gethours').value);
+// let getMinutes = parseInt(document.getElementById('getminutes').value);
+// let getSeconds = parseInt(document.getElementById('getseconds').value);
+
+// Time Vars
+let timerSeconds = 0;
+let futureTimeBySeconds = 0;
+let timer;
 
 // Use Else and display it as <p> not an alert
 /*
@@ -28,105 +33,68 @@ if (!isNan(getHours) || !isNan(getMinutes) || !isNan(getSeconds) ) {
 */
 
 /* Select  timer*/
-let stopwatch = document.getElementById("timer");
+let stopwatch = document.getElementById('timer');
 
 // Declare variables
 let stop = true;
 
 // Starts the timer
 function startTimer() {
-    if (stop == true) {
-        stop = false;
-    }
-    cycleTimer();
+  if (stop == true) {
+    stop = false;
+  }
+  cycleTimer();
 }
 
 // Stops the timer
 function stopTimer() {
-    if (stop == false) {
-        stop = true;
-    }
+  if (stop == false) {
+    stop = true;
+  }
 }
 function setTimer() {
-    getHours = parseInt(document.getElementById("gethours").value);
-    getMinutes = parseInt(document.getElementById("getminutes").value);
-    getSeconds = parseInt(document.getElementById("getseconds").value);
+  getHours = parseInt(document.getElementById('gethours').value);
+  getMinutes = parseInt(document.getElementById('getminutes').value);
+  getSeconds = parseInt(document.getElementById('getseconds').value);
 
-    // Display data
-    stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
+  timerSeconds = getSeconds + getMinutes * 60 + getHours * 60 * 60;
+  setTime(timerSeconds);
+  console.log(timerSeconds);
+  // Display data
+  //   stopwatch.innerHTML = getHours + ':' + getMinutes + ':' + getSeconds;
 }
 
 function cycleTimer() {
-    if (stop == false) {
+  let currentDate = new Date();
+  let seconds = Math.floor(Date.now() / 1000);
+  futureTimeBySeconds = seconds + timerSeconds;
+  timer = setInterval(refreshTime, 1000);
+}
 
-        // Start counting seconds
-        getSeconds--;
-    
-        /* When target is reached increment values */
-        if (getHours == 0 && getMinutes == 0 && getSeconds == 0) {
-            let audio = new Audio("./music/piano.mp3");
-            audio.play();
-            setTimeout(function(){
-                alert("Time is Over! Artist: Alexander Blu // Song: Soft Piano Song");
-            }, 500);
-        }
-        // Parse to Int
-        getHours = parseInt(getHours);
-        getMinutes = parseInt(getMinutes);
-        getSeconds = parseInt(getSeconds);
+function refreshTime() {
+  let seconds = Math.floor(Date.now() / 1000);
+  diffTime = futureTimeBySeconds - seconds;
+  console.log(diffTime);
+  setTime(diffTime);
+  if (diffTime <= 0) {
+    console.log('hi');
+    clearInterval(timer);
+  }
+}
 
-        if (getHours && getMinutes == 0) {
+function setTime(newTime) {
+  var date = new Date(null);
+  date.setSeconds(newTime); // specify value for SECONDS here
+  var result = date.toISOString().substr(11, 8);
 
-            // Delay 1 second
-            setTimeout(function(){
-                getHours--;
-                getMinutes--;
-                getSeconds = 60; 
-            }, 1000); 
-        }
-        // Checked and Works
-        if (getMinutes && getSeconds == 0) {
-            
-            // Delay 1 second
-            setTimeout(function(){
-                getMinutes--; 
-                getSeconds = 60; 
-            }, 1000);       
-        }
-        if (getSeconds < 10 || getSeconds == 0) {
-            getSeconds = "0" + getSeconds;
-        }
-        if (getMinutes < 10 || getMinutes == 0) {
-            getMinutes = "0" + getMinutes;
-        }
-        if (getHours < 10 || getHours == 0) {
-            getHours = "0" + getHours;
-        }
-    
-        // Display data
-        stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
-
-        // Reload page if seconds are NaN
-        /*
-        if (isNaN(getSeconds)) {
-            window.location.reload();
-        }
-        */
-       
-        // Call cycleTimer() every 10ms
-        setTimeout("cycleTimer()", 1000);
-    }
+  stopwatch.innerHTML = result;
 }
 
 // Resets the timer
 function resetTimer() {
-    getHours = 0;
-    getMinutes = 0;
-    getSeconds = 0;
+  getHours = parseInt(getHours);
+  getMinutes = parseInt(getMinutes);
+  getSeconds = parseInt(getSeconds);
 
-    getHours = parseInt(getHours);
-    getMinutes = parseInt(getMinutes);
-    getSeconds = parseInt(getSeconds);
-
-    stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
+  stopwatch.innerHTML = getHours + ':' + getMinutes + ':' + getSeconds;
 }

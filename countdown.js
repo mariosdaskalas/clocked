@@ -21,10 +21,10 @@ let getHours = parseInt(document.getElementById("gethours").value);
 let getMinutes = parseInt(document.getElementById("getminutes").value);
 let getSeconds = parseInt(document.getElementById("getseconds").value);
 
-/* Use Else and display it as <p> not an alert
+// Use Else and display it as <p> not an alert
+/*
 if (!isNan(getHours) || !isNan(getMinutes) || !isNan(getSeconds) ) {
     alert("Please input only numbers");
-}
 */
 
 /* Select  timer*/
@@ -59,7 +59,7 @@ function setTimer() {
 function cycleTimer() {
     if (stop == false) {
 
-        // Start counting miliseconds
+        // Start counting seconds
         getSeconds--;
     
         /* When target is reached increment values */
@@ -75,9 +75,23 @@ function cycleTimer() {
         getMinutes = parseInt(getMinutes);
         getSeconds = parseInt(getSeconds);
 
+        if (getHours && getMinutes == 0) {
+
+            // Delay 1 second
+            setTimeout(function(){
+                getHours--;
+                getMinutes--;
+                getSeconds = 60; 
+            }, 1000); 
+        }
+        // Checked and Works
         if (getMinutes && getSeconds == 0) {
-            getMinutes--;
-            getSeconds = 60;
+            
+            // Delay 1 second
+            setTimeout(function(){
+                getMinutes--; 
+                getSeconds = 60; 
+            }, 1000);       
         }
         if (getSeconds < 10 || getSeconds == 0) {
             getSeconds = "0" + getSeconds;
@@ -92,9 +106,12 @@ function cycleTimer() {
         // Display data
         stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
 
+        // Reload page if seconds are NaN
+        /*
         if (isNaN(getSeconds)) {
             window.location.reload();
         }
+        */
        
         // Call cycleTimer() every 10ms
         setTimeout("cycleTimer()", 1000);

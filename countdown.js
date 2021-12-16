@@ -24,7 +24,7 @@ function refresh() {
 // Time Vars
 let timerSeconds = 0;
 let futureTimeBySeconds = 0;
-let timer;
+let intervalTimer;
 
 // Use Else and display it as <p> not an alert
 /*
@@ -35,66 +35,53 @@ if (!isNan(getHours) || !isNan(getMinutes) || !isNan(getSeconds) ) {
 /* Select  timer*/
 let stopwatch = document.getElementById('timer');
 
-// Declare variables
-let stop = true;
-
-// Starts the timer
-function startTimer() {
-  if (stop == true) {
-    stop = false;
-  }
-  cycleTimer();
-}
-
-// Stops the timer
-function stopTimer() {
-  if (stop == false) {
-    stop = true;
-  }
-}
+// Set the Timer Vars and the Watchface to the new Timer
 function setTimer() {
   getHours = parseInt(document.getElementById('gethours').value);
   getMinutes = parseInt(document.getElementById('getminutes').value);
   getSeconds = parseInt(document.getElementById('getseconds').value);
 
   timerSeconds = getSeconds + getMinutes * 60 + getHours * 60 * 60;
-  setTime(timerSeconds);
-  console.log(timerSeconds);
-  // Display data
-  //   stopwatch.innerHTML = getHours + ':' + getMinutes + ':' + getSeconds;
+  setWatchfaceTime(timerSeconds);
 }
 
-function cycleTimer() {
+// Changes the visible time
+function setWatchfaceTime(newTime) {
+  let date = new Date(null);
+  date.setSeconds(newTime);
+  stopwatch.innerHTML = date.toISOString().slice(11, 19);
+}
+
+// Starts the timer
+function startTimer() {
   let currentDate = new Date();
   let seconds = Math.floor(Date.now() / 1000);
   futureTimeBySeconds = seconds + timerSeconds;
-  timer = setInterval(refreshTime, 1000);
+
+  // calculates the time difference every Second,
+  intervalTimer = setInterval(renewTimeDifference, 100);
 }
 
-function refreshTime() {
+// calculate the time difference and renews the Watchface,
+// until diff is smaller equal 0
+function renewTimeDifference() {
   let seconds = Math.floor(Date.now() / 1000);
   diffTime = futureTimeBySeconds - seconds;
-  console.log(diffTime);
-  setTime(diffTime);
+  setWatchfaceTime(diffTime);
+
   if (diffTime <= 0) {
-    console.log('hi');
-    clearInterval(timer);
+    clearInterval(intervalTimer);
   }
 }
 
-function setTime(newTime) {
-  var date = new Date(null);
-  date.setSeconds(newTime); // specify value for SECONDS here
-  var result = date.toISOString().substr(11, 8);
-
-  stopwatch.innerHTML = result;
+// Stops the timer
+function stopTimer() {
+  let seconds = Math.floor(Date.now() / 1000);
+  timerSeconds = futureTimeBySeconds - seconds;
+  clearInterval(intervalTimer);
 }
 
-// Resets the timer
 function resetTimer() {
-  getHours = parseInt(getHours);
-  getMinutes = parseInt(getMinutes);
-  getSeconds = parseInt(getSeconds);
-
-  stopwatch.innerHTML = getHours + ':' + getMinutes + ':' + getSeconds;
+  setTimer();
+  clearInterval(intervalTimer);
 }

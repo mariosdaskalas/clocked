@@ -16,21 +16,10 @@ function refresh() {
   location.reload();
 }
 
-// // Get data from input fields
-// let getHours = parseInt(document.getElementById('gethours').value);
-// let getMinutes = parseInt(document.getElementById('getminutes').value);
-// let getSeconds = parseInt(document.getElementById('getseconds').value);
-
 // Time Vars
 let timerSeconds = 0;
 let futureTimeBySeconds = 0;
 let intervalTimer;
-
-// Use Else and display it as <p> not an alert
-/*
-if (!isNan(getHours) || !isNan(getMinutes) || !isNan(getSeconds) ) {
-    alert("Please input only numbers");
-*/
 
 /* Select  timer*/
 let stopwatch = document.getElementById('timer');

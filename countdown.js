@@ -1,132 +1,98 @@
+// Global Vars
+let timerSeconds = 0;
+let futureTimeBySeconds = 0;
+let intervalTimer;
+
+let audio;
+
 /* CSS DOM Manipulation */
 
 function increase() {
-    document.getElementById("timer").style.fontSize = "650%";
+  document.getElementById('timer').style.fontSize = '650%';
 }
 
 function decrease() {
-    document.getElementById("timer").style.fontSize = "350%";
+  document.getElementById('timer').style.fontSize = '350%';
 }
 
 function changefont() {
-    document.getElementById("timer").style.fontFamily = "cursive";
+  document.getElementById('timer').style.fontFamily = 'cursive';
 }
 
 function refresh() {
-    location.reload();
+  location.reload();
 }
 
-// Get data from input fields
-let getHours = parseInt(document.getElementById("gethours").value);
-let getMinutes = parseInt(document.getElementById("getminutes").value);
-let getSeconds = parseInt(document.getElementById("getseconds").value);
-
-// Use Else and display it as <p> not an alert
-/*
-if (!isNan(getHours) || !isNan(getMinutes) || !isNan(getSeconds) ) {
-    alert("Please input only numbers");
-*/
-
 /* Select  timer*/
-let stopwatch = document.getElementById("timer");
+let stopwatch = document.getElementById('timer');
 
-// Declare variables
-let stop = true;
+// Set the Timer Vars and the Watchface to the new Timer
+function setTimer() {
+  getHours = parseInt(document.getElementById('gethours').value);
+  getMinutes = parseInt(document.getElementById('getminutes').value);
+  getSeconds = parseInt(document.getElementById('getseconds').value);
+
+  timerSeconds = getSeconds + getMinutes * 60 + getHours * 60 * 60;
+  document.getElementById('start').style.display = 'inline';
+  setWatchfaceTime(timerSeconds);
+}
+
+// Changes the visible time
+function setWatchfaceTime(newTime) {
+  let date = new Date(null);
+  date.setSeconds(newTime);
+  stopwatch.innerHTML = date.toISOString().slice(11, 19);
+}
 
 // Starts the timer
 function startTimer() {
-    if (stop == true) {
-        stop = false;
-    }
-    cycleTimer();
+  let currentDate = new Date();
+  let seconds = Math.floor(Date.now() / 1000);
+  futureTimeBySeconds = seconds + timerSeconds;
+
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('set').style.display = 'none';
+  document.getElementById('stop').style.display = 'inline';
+  document.getElementById('reset').style.display = 'none';
+
+  // calculates the time difference every Second
+  intervalTimer = setInterval(renewTimeDifference, 100);
+}
+
+// calculate the time difference and renews the Watchface,
+// until diff is smaller equal 0
+function renewTimeDifference() {
+  let seconds = Math.floor(Date.now() / 1000);
+  diffTime = futureTimeBySeconds - seconds;
+  setWatchfaceTime(diffTime);
+
+  if (diffTime < 0) {
+    playAlarm();
+    resetTimer();
+  }
 }
 
 // Stops the timer
 function stopTimer() {
-    if (stop == false) {
-        stop = true;
-    }
-}
-function setTimer() {
-    getHours = parseInt(document.getElementById("gethours").value);
-    getMinutes = parseInt(document.getElementById("getminutes").value);
-    getSeconds = parseInt(document.getElementById("getseconds").value);
+  let seconds = Math.floor(Date.now() / 1000);
+  timerSeconds = futureTimeBySeconds - seconds;
+  clearInterval(intervalTimer);
 
-    // Display data
-    stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
+  document.getElementById('start').style.display = 'inline';
+  document.getElementById('stop').style.display = 'none';
+  document.getElementById('reset').style.display = 'inline';
 }
 
-function cycleTimer() {
-    if (stop == false) {
-
-        // Start counting seconds
-        getSeconds--;
-    
-        /* When target is reached increment values */
-        if (getHours == 0 && getMinutes == 0 && getSeconds == 0) {
-            let audio = new Audio("./music/piano.mp3");
-            audio.play();
-            setTimeout(function(){
-                alert("Time is Over! Artist: Alexander Blu // Song: Soft Piano Song");
-            }, 500);
-        }
-        // Parse to Int
-        getHours = parseInt(getHours);
-        getMinutes = parseInt(getMinutes);
-        getSeconds = parseInt(getSeconds);
-
-        if (getHours && getMinutes == 0) {
-
-            // Delay 1 second
-            setTimeout(function(){
-                getHours--;
-                getMinutes--;
-                getSeconds = 60; 
-            }, 1000); 
-        }
-        // Checked and Works
-        if (getMinutes && getSeconds == 0) {
-            
-            // Delay 1 second
-            setTimeout(function(){
-                getMinutes--; 
-                getSeconds = 60; 
-            }, 1000);       
-        }
-        if (getSeconds < 10 || getSeconds == 0) {
-            getSeconds = "0" + getSeconds;
-        }
-        if (getMinutes < 10 || getMinutes == 0) {
-            getMinutes = "0" + getMinutes;
-        }
-        if (getHours < 10 || getHours == 0) {
-            getHours = "0" + getHours;
-        }
-    
-        // Display data
-        stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
-
-        // Reload page if seconds are NaN
-        /*
-        if (isNaN(getSeconds)) {
-            window.location.reload();
-        }
-        */
-       
-        // Call cycleTimer() every 10ms
-        setTimeout("cycleTimer()", 1000);
-    }
+function playAlarm() {
+  audio = new Audio('./music/piano.mp3');
+  audio.play();
+  setTimeout(function () {
+    window.confirm('Time is Over! Artist: Alexander Blu // Song: Soft Piano Song');
+    audio.pause();
+  }, 500);
 }
 
-// Resets the timer
 function resetTimer() {
-    getHours = 0;
-    getMinutes = 0;
-    getSeconds = 0;
-
-    getHours = parseInt(getHours);
-    getMinutes = parseInt(getMinutes);
-    getSeconds = parseInt(getSeconds);
-
-    stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
+  setTimer();
+  clearInterval(intervalTimer);
 }

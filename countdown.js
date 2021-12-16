@@ -21,6 +21,8 @@ let timerSeconds = 0;
 let futureTimeBySeconds = 0;
 let intervalTimer;
 
+let audio;
+
 /* Select  timer*/
 let stopwatch = document.getElementById('timer');
 
@@ -51,7 +53,7 @@ function startTimer() {
   document.getElementById('start').style.display = 'none';
   document.getElementById('set').style.display = 'none';
   document.getElementById('stop').style.display = 'inline';
-  document.getElementById('reset').style.display = 'inline';
+  document.getElementById('reset').style.display = 'none';
 
   // calculates the time difference every Second
   intervalTimer = setInterval(renewTimeDifference, 100);
@@ -64,8 +66,9 @@ function renewTimeDifference() {
   diffTime = futureTimeBySeconds - seconds;
   setWatchfaceTime(diffTime);
 
-  if (diffTime <= 0) {
-    clearInterval(intervalTimer);
+  if (diffTime < 0) {
+    playAlarm();
+    resetTimer();
   }
 }
 
@@ -77,6 +80,16 @@ function stopTimer() {
 
   document.getElementById('start').style.display = 'inline';
   document.getElementById('stop').style.display = 'none';
+  document.getElementById('reset').style.display = 'inline';
+}
+
+function playAlarm() {
+  audio = new Audio('./music/piano.mp3');
+  audio.play();
+  setTimeout(function () {
+    window.confirm('Time is Over! Artist: Alexander Blu // Song: Soft Piano Song');
+    audio.pause();
+  }, 500);
 }
 
 function resetTimer() {

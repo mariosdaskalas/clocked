@@ -1,3 +1,10 @@
+// Global Vars
+let timerSeconds = 0;
+let futureTimeBySeconds = 0;
+let intervalTimer;
+
+let audio;
+
 /* CSS DOM Manipulation */
 
 function increase() {
@@ -15,13 +22,6 @@ function changefont() {
 function refresh() {
   location.reload();
 }
-
-// Time Vars
-let timerSeconds = 0;
-let futureTimeBySeconds = 0;
-let intervalTimer;
-
-let audio;
 
 /* Select  timer*/
 let stopwatch = document.getElementById('timer');

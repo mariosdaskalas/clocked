@@ -1,104 +1,119 @@
 body {
-    font-family: Roboto;
-    background-color: lightgray;
+  font-family: Roboto;
+  background-color: lightgray;
 }
 h1 {
-    text-align: center;
+  text-align: center;
 }
 .card-item {
-    background-color: orange;
-    padding: 1rem;
-    height: 3.5rem;
-    text-align: center;
-    font-size: 120%;
+  background-color: orange;
+  padding: 1rem;
+  height: 3.5rem;
+  text-align: center;
+  font-size: 120%;
 }
 .card-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-gap: 1rem;
-    margin-top: 1%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 1rem;
+  margin-top: 1%;
 }
 @media (min-width: 550px) {
-    .card-container { grid-template-columns: repeat(2, 1fr); }
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (min-width: 900px) {
-    .card-container { grid-template-columns: repeat(3, 1fr); }
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
-a:visited, a:link {
-    color: black;
+a:visited,
+a:link {
+  color: black;
 }
 a:hover {
-    font-weight: bold;
-    font-style: italic;
-    font-size: 110%;
-    text-decoration: underline;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 110%;
+  text-decoration: underline;
 }
 p {
-    display: inline;
-    margin: 4px;
+  display: inline;
+  margin: 4px;
 }
 #date {
-    font-size: 350%;
-    color: rgb(47, 47, 207);
+  font-size: 350%;
+  color: rgb(47, 47, 207);
 }
 #timer {
-    font-size: 450%;
-    color: rgb(47, 47, 207);
+  font-size: 450%;
+  color: rgb(47, 47, 207);
 }
 #day {
-    font-size: 250%;
-    color: rgb(47, 47, 207);
+  font-size: 250%;
+  color: rgb(47, 47, 207);
 }
 #time {
-    font-size: 450%;
-    color: rgb(219, 41, 41);
+  font-size: 450%;
+  color: rgb(219, 41, 41);
 }
-#date-container, #stopwatch-container, #countdown-container {
-    text-align: center;
-    margin: 0 auto;
-    background-color: rgba(180, 174, 174, 0.7);
-    width: 100%;
+#date-container,
+#stopwatch-container,
+#countdown-container {
+  text-align: center;
+  margin: 0 auto;
+  background-color: rgba(180, 174, 174, 0.7);
+  width: 100%;
 }
 #icon-container {
-    text-align: center;
-    margin: 1%;
-} 
+  text-align: center;
+  margin: 1%;
+}
 .title {
-    text-align: center;
+  text-align: center;
 }
 button {
-    background-color: orange;
-    font-size: 100%;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-weight: bold;
+  background-color: orange;
+  font-size: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-weight: bold;
 }
 button:hover {
-    background-color: rgb(228, 161, 38);
+  background-color: rgb(228, 161, 38);
 }
-#options, #controls, #edit {
-    margin: 1.5rem;
-    text-align: center;
+#options,
+#controls,
+#edit {
+  margin: 1.5rem;
+  text-align: center;
 }
 #credits {
-    text-align: center;
-    margin: 0 auto;
-    background-color: orange;
-    font-size: 120%;
-    width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  background-color: orange;
+  font-size: 120%;
+  width: 70%;
 }
-input[type="number"] {
-    font-size: 110%;
+input[type='number'] {
+  font-size: 110%;
 }
 input {
-    border-radius: 4px;
-    text-align: center;
+  border-radius: 4px;
+  text-align: center;
 }
 input:hover {
-    background-color: orange;
+  background-color: orange;
+}
+
+#stop,
+#reset,
+#start {
+  display: none;
 }

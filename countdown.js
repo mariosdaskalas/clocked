@@ -31,6 +31,7 @@ function setTimer() {
   getSeconds = parseInt(document.getElementById('getseconds').value);
 
   timerSeconds = getSeconds + getMinutes * 60 + getHours * 60 * 60;
+  document.getElementById('start').style.display = 'inline';
   setWatchfaceTime(timerSeconds);
 }
 
@@ -47,7 +48,12 @@ function startTimer() {
   let seconds = Math.floor(Date.now() / 1000);
   futureTimeBySeconds = seconds + timerSeconds;
 
-  // calculates the time difference every Second,
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('set').style.display = 'none';
+  document.getElementById('stop').style.display = 'inline';
+  document.getElementById('reset').style.display = 'inline';
+
+  // calculates the time difference every Second
   intervalTimer = setInterval(renewTimeDifference, 100);
 }
 
@@ -68,6 +74,9 @@ function stopTimer() {
   let seconds = Math.floor(Date.now() / 1000);
   timerSeconds = futureTimeBySeconds - seconds;
   clearInterval(intervalTimer);
+
+  document.getElementById('start').style.display = 'inline';
+  document.getElementById('stop').style.display = 'none';
 }
 
 function resetTimer() {

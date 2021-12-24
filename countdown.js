@@ -69,12 +69,15 @@ function cycleTimer() {
             setTimeout(function(){
                 alert("Time is Over! Artist: Alexander Blu // Song: Soft Piano Song");
             }, 500);
+            document.getElementById("countdown-container").innerHTML = "Time Is Over!";
+            document.getElementById("countdown-container").style.fontSize = "200%";
         }
+
         // Parse to Int
         getHours = parseInt(getHours);
         getMinutes = parseInt(getMinutes);
         getSeconds = parseInt(getSeconds);
-
+        
         if (getHours && getMinutes == 0) {
 
             // Delay 1 second

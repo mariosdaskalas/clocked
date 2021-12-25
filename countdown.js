@@ -17,15 +17,9 @@ function refresh() {
 }
 
 // Get data from input fields
-let getHours = parseInt(document.getElementById("gethours").value);
+// let getHours = parseInt(document.getElementById("gethours").value);
 let getMinutes = parseInt(document.getElementById("getminutes").value);
 let getSeconds = parseInt(document.getElementById("getseconds").value);
-
-// Use Else and display it as <p> not an alert
-/*
-if (!isNan(getHours) || !isNan(getMinutes) || !isNan(getSeconds) ) {
-    alert("Please input only numbers");
-*/
 
 /* Select  timer*/
 let stopwatch = document.getElementById("timer");
@@ -48,12 +42,12 @@ function stopTimer() {
     }
 }
 function setTimer() {
-    getHours = parseInt(document.getElementById("gethours").value);
+    // getHours = parseInt(document.getElementById("gethours").value);
     getMinutes = parseInt(document.getElementById("getminutes").value);
     getSeconds = parseInt(document.getElementById("getseconds").value);
 
     // Display data
-    stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
+    stopwatch.innerHTML = getMinutes + ":" + getSeconds;
 }
 
 function cycleTimer() {
@@ -63,7 +57,7 @@ function cycleTimer() {
         getSeconds--;
     
         /* When target is reached increment values */
-        if (getHours == 0 && getMinutes == 0 && getSeconds == 0) {
+        if (getMinutes == 0 && getSeconds == 0) {
             let audio = new Audio("./music/piano.mp3");
             audio.play();
             setTimeout(function(){
@@ -74,12 +68,11 @@ function cycleTimer() {
         }
 
         // Parse to Int
-        getHours = parseInt(getHours);
+        // getHours = parseInt(getHours);
         getMinutes = parseInt(getMinutes);
         getSeconds = parseInt(getSeconds);
-        
+        /*
         if (getHours && getMinutes == 0) {
-
             // Delay 1 second
             setTimeout(function(){
                 getHours--;
@@ -87,14 +80,27 @@ function cycleTimer() {
                 getSeconds = 60; 
             }, 1000); 
         }
-        // Checked and Works
-        if (getMinutes && getSeconds == 0) {
-            
+        */
+       /*
+        if (getHours && getMinutes && getSeconds == 0) {
             // Delay 1 second
+            setTimeout(function() {
+                getMinutes--;
+            }, 1000);
+            setTimeout(function(){
+                getHours;
+                getSeconds = 60;
+            }, 1000); 
+            console.log(`Runs: getHours && getMinutes && getSeconds == 0`);
+        }
+        */
+        if (getMinutes && getSeconds == 0) {
+            // Delay 1 second    
             setTimeout(function(){
                 getMinutes--; 
                 getSeconds = 60; 
-            }, 1000);       
+                console.log(`Runs getMinutes && getSeconds == 0`);
+            }, 1000);      
         }
         if (getSeconds < 10 || getSeconds == 0) {
             getSeconds = "0" + getSeconds;
@@ -102,19 +108,14 @@ function cycleTimer() {
         if (getMinutes < 10 || getMinutes == 0) {
             getMinutes = "0" + getMinutes;
         }
+        /*
         if (getHours < 10 || getHours == 0) {
             getHours = "0" + getHours;
         }
+        */
     
         // Display data
-        stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
-
-        // Reload page if seconds are NaN
-        /*
-        if (isNaN(getSeconds)) {
-            window.location.reload();
-        }
-        */
+        stopwatch.innerHTML =  getMinutes + ":" + getSeconds;
        
         // Call cycleTimer() every 10ms
         setTimeout("cycleTimer()", 1000);
@@ -123,13 +124,13 @@ function cycleTimer() {
 
 // Resets the timer
 function resetTimer() {
-    getHours = 0;
+    // getHours = 0;
     getMinutes = 0;
     getSeconds = 0;
 
-    getHours = parseInt(getHours);
+    // getHours = parseInt(getHours);
     getMinutes = parseInt(getMinutes);
     getSeconds = parseInt(getSeconds);
 
-    stopwatch.innerHTML = getHours + ":" + getMinutes + ":" + getSeconds;
+    stopwatch.innerHTML = getMinutes + ":" + getSeconds;
 }

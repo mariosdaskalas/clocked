@@ -81,7 +81,7 @@ button {
 button:hover {
     background-color: rgb(228, 161, 38);
 }
-#options, #controls, #edit {
+#options, #controls, #edit, #predefined {
     margin: 1.5rem;
     text-align: center;
 }

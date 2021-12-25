@@ -134,3 +134,24 @@ function resetTimer() {
 
     stopwatch.innerHTML = getMinutes + ":" + getSeconds;
 }
+function tenMinutes() {
+    getMinutes = 10;
+    getSeconds = 1;
+
+    // Display data
+    stopwatch.innerHTML = getMinutes + ":" + getSeconds;
+}
+function thirtyMinutes() {
+    getMinutes = 30;
+    getSeconds = 1;
+    
+    // Display data
+    stopwatch.innerHTML = getMinutes + ":" + getSeconds;
+}
+function fiftyMinutes() {
+    getMinutes = 50;
+    getSeconds = 1;
+    
+    // Display data
+    stopwatch.innerHTML = getMinutes + ":" + getSeconds;
+}

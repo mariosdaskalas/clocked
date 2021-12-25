@@ -17,6 +17,8 @@ function refresh() {
 }
 
 // Get data from input fields
+
+// Future Use
 // let getHours = parseInt(document.getElementById("gethours").value);
 let getMinutes = parseInt(document.getElementById("getminutes").value);
 let getSeconds = parseInt(document.getElementById("getseconds").value);
@@ -42,6 +44,7 @@ function stopTimer() {
     }
 }
 function setTimer() {
+    // Future Use
     // getHours = parseInt(document.getElementById("gethours").value);
     getMinutes = parseInt(document.getElementById("getminutes").value);
     getSeconds = parseInt(document.getElementById("getseconds").value);
@@ -52,10 +55,8 @@ function setTimer() {
 
 function cycleTimer() {
     if (stop == false) {
-
+ 
         // Start counting seconds
-        // getSeconds--;
-
         if (getSeconds > 0) {
             getSeconds--;
         }    
@@ -66,6 +67,8 @@ function cycleTimer() {
         if (getMinutes == 0 && getSeconds == 0) {
             document.getElementById("countdown-container").innerHTML = "Time Is Over!";
             document.getElementById("countdown-container").style.fontSize = "200%";
+            
+            // Play song when timer ends
             // let audio = new Audio("./music/piano.mp3");
             // audio.play();
             /*
@@ -80,6 +83,7 @@ function cycleTimer() {
         getMinutes = parseInt(getMinutes);
         getSeconds = parseInt(getSeconds);
         /*
+        // Future Use
         if (getHours && getMinutes == 0) {
             // Delay 1 second
             setTimeout(function(){
@@ -88,8 +92,6 @@ function cycleTimer() {
                 getSeconds = 60; 
             }, 1000); 
         }
-        */
-       /*
         if (getHours && getMinutes && getSeconds == 0) {
             // Delay 1 second
             setTimeout(function() {
@@ -122,6 +124,7 @@ function cycleTimer() {
             getMinutes = "0" + getMinutes;
         }
         /*
+        // Future Use
         if (getHours < 10 || getHours == 0) {
             getHours = "0" + getHours;
         }
@@ -137,10 +140,12 @@ function cycleTimer() {
 
 // Resets the timer
 function resetTimer() {
+    // Future Use
     // getHours = 0;
     getMinutes = 0;
     getSeconds = 0;
 
+    // Future Use
     // getHours = parseInt(getHours);
     getMinutes = parseInt(getMinutes);
     getSeconds = parseInt(getSeconds);

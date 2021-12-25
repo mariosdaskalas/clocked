@@ -54,7 +54,14 @@ function cycleTimer() {
     if (stop == false) {
 
         // Start counting seconds
-        getSeconds--;
+        // getSeconds--;
+
+        if (getSeconds > 0) {
+            getSeconds--;
+        }    
+        else {
+            getSeconds = 0;
+        }
     
         /* When target is reached increment values */
         if (getMinutes == 0 && getSeconds == 0) {
@@ -102,6 +109,11 @@ function cycleTimer() {
                 console.log(`Runs getMinutes && getSeconds == 0`);
             }, 1000);      
         }
+        if (getMinutes == 0 && getSeconds) {
+            getMinutes = 0;
+            getSeconds;
+            console.log(`Runs getMinutes == 0 && getSeconds`);
+        }
         if (getSeconds < 10 || getSeconds == 0) {
             getSeconds = "0" + getSeconds;
         }
@@ -136,21 +148,21 @@ function resetTimer() {
 }
 function tenMinutes() {
     getMinutes = 10;
-    getSeconds = 1;
+    getSeconds = 0;
 
     // Display data
     stopwatch.innerHTML = getMinutes + ":" + getSeconds;
 }
 function thirtyMinutes() {
     getMinutes = 30;
-    getSeconds = 1;
+    getSeconds = 0;
     
     // Display data
     stopwatch.innerHTML = getMinutes + ":" + getSeconds;
 }
 function fiftyMinutes() {
     getMinutes = 50;
-    getSeconds = 1;
+    getSeconds = 0;
     
     // Display data
     stopwatch.innerHTML = getMinutes + ":" + getSeconds;

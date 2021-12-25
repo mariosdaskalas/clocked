@@ -62,16 +62,17 @@ function cycleTimer() {
         else {
             getSeconds = 0;
         }
-    
         /* When target is reached increment values */
         if (getMinutes == 0 && getSeconds == 0) {
-            let audio = new Audio("./music/piano.mp3");
-            audio.play();
+            document.getElementById("countdown-container").innerHTML = "Time Is Over!";
+            document.getElementById("countdown-container").style.fontSize = "200%";
+            // let audio = new Audio("./music/piano.mp3");
+            // audio.play();
+            /*
             setTimeout(function(){
                 alert("Time is Over! Artist: Alexander Blu // Song: Soft Piano Song");
             }, 500);
-            document.getElementById("countdown-container").innerHTML = "Time Is Over!";
-            document.getElementById("countdown-container").style.fontSize = "200%";
+            */
         }
 
         // Parse to Int
